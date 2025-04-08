@@ -44,4 +44,4 @@ server
 other shit: proxy, nginx, aws-lamda, aws normal, can't remember everything
 
 Process
-desing the db
+design the db
