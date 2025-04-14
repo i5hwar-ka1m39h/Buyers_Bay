@@ -45,3 +45,9 @@ other shit: proxy, nginx, aws-lamda, aws normal, can't remember everything
 
 Process
 design the db
+*order - request to purchase product or services
+should contain product, their prices , quantity , tax, shipping cost, total, id, address and status [pending, processing, completed, cancelled]
+
+two ways to create order
+cart order -> add to cart then checkout the cart 
+buy single -> just go to checkout
