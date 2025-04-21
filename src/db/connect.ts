@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 export const connectDB = async() =>{
     try {
         let env = process.env.ENV;
+       
+        
         let dbUrl ;
         if(env === 'DEV'){
             dbUrl = process.env.DEV_DB_URL;
