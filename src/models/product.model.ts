@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const productSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true,
-        max:[50, "max character count is 50"]
+        maxlength:[50, "max character count is 50"],
+        index:true
     },
-    desciption:{
+    description:{
         type:String,
     },
     price:{
@@ -32,8 +34,9 @@ const productSchema = new mongoose.Schema({
     imgUrl:{
         type:String,
         required:true,
-        default:'//'
+        default:'https://'
     }
 }, {timestamps:true});
 
+productSchema.plugin(mongooseAggregatePaginate)
 export const Product = mongoose.model('Product', productSchema)
