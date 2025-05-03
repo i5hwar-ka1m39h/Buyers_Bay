@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required:true,
         min:[3, "the username should be list 3 characters"],
-        max:[50, "thats just too much characters in your name"]
+        max:[50, "thats just too much characters in your name"],
+        unique:true
     },
     email:{
         type:String,
@@ -24,12 +25,12 @@ const userSchema = new mongoose.Schema({
         default:false
     },
     address:{
-        line1:{type:String, requied:true},
+        line1:{type:String, required:true},
         line2:{type:String},
         city:{type:String, required:true},
         state:{type:String, required:true},
         country:{type:String, required:true},
-        zipCode:{types:String, required:true},
+        zipCode:{type:String, required:true},
         
     },
     refreshToken:{
