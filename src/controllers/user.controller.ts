@@ -12,7 +12,7 @@ class UserController{
         
         //check if given or not
         const isThereSingleEmpty = [email, password, username].some(string  => string?.trim().length === 0);       
-        if(isThereSingleEmpty){      
+        if(isThereSingleEmpty || !email || !password || !username){      
             throw new ApiError(400, "bad request, empty string for email , password or username")
         }
 
