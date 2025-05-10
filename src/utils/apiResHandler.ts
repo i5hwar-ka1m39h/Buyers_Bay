@@ -9,7 +9,7 @@
     constructor(statusCode:number, 
         message:string, 
         data:any,
-        success:boolean){
+    ){
             this.statusCode=statusCode;
             this.message =message;
             this.data = data;

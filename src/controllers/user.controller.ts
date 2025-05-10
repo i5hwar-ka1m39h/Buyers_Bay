@@ -11,8 +11,8 @@ class UserController{
         const {email, password, username} = req.body;
         
         //check if given or not
-        const isThereSingleEmpty = [email, password, username].some(string  => string?.trim().length === 0)
-        if(isThereSingleEmpty){
+        const isThereSingleEmpty = [email, password, username].some(string  => string?.trim().length === 0);       
+        if(isThereSingleEmpty){      
             throw new ApiError(400, "bad request, empty string for email , password or username")
         }
 
@@ -20,6 +20,7 @@ class UserController{
         const doesMailExist = await User.findOne({
             $or: [{email:email}, {name:username}]
         });
+        
         if(doesMailExist) throw new ApiError(409, "email already in use");
 
         //create db entry
@@ -38,7 +39,7 @@ class UserController{
 
         //return response
         return res.status(201).json(
-            new ApiResponse(200, "user created successfully", checkUser, true)
+            new ApiResponse(201, "user created successfully", checkUser)
         )
         
     })

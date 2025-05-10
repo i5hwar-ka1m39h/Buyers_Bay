@@ -6,10 +6,14 @@ export const connectDB = async() =>{
     try {
         let env = process.env.ENV;
        
+        console.log(env);
+        
         
         let dbUrl ;
         if(env === 'DEV'){
             dbUrl = process.env.DEV_DB_URL;
+          
+            
         }else{
             dbUrl = process.env.PROD_DB_URL;
         }
