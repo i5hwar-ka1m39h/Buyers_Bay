@@ -13,7 +13,7 @@ app.use(cors({
 }));
 
 const errHnadlerFun: ErrorRequestHandler = (err, req, res, next) => {
-    console.log(`Error caught in middleware: `, {
+    console.log(`Error caught in middleware responser: `, {
         message: err.message,
         statusCode: err.statusCode,
         success: err.success,

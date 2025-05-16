@@ -2,7 +2,15 @@ import mongoose from "mongoose";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken';
 
-const userSchema = new mongoose.Schema({
+interface UserMethods{
+   checkPassword(password:string):Promise<boolean>;
+   createAccToken():Promise<string>;
+   createRefToken(): Promise<string>;
+
+}
+
+
+const userSchema = new mongoose.Schema<any, any, UserMethods>({
     name: {
         type: String,
         required: true,
@@ -40,13 +48,13 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre("save", async function (next) {
     if (!this.isModified()) return next();
-    this.password = await bcrypt.hash(this.password, 10);
+    this.password = await bcrypt.hash(this.password as string, 10);
     next();
 
 });
 
-userSchema.methods.checkPassword = async function (password: string) {
-    const match = await bcrypt.compare(password, this.password);
+userSchema.methods.checkPassword = async function (inpassword: string) {
+    const match = await bcrypt.compare(inpassword, this.password as string);
     return match;
 }
 
